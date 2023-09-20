@@ -1,3 +1,14 @@
+const userInfos = [
+  {
+    username: 'admin',
+    password: 'Lzdn88552016'
+  },
+  {
+    username: 'admin1',
+    password: 'admin@123456'
+  }
+]
+
 // 获取username输入框
 const getUserNameInput = (value) => {
   // const nodeList = document.querySelectorAll('.smc-login-form .form_input')
@@ -41,12 +52,13 @@ const getBtnNode = () => {
 
 //  进入页面立即触发
 const onLoginClick = async () => {
-  return
+  const userInfo = userInfos[0]
+
   // 用户
-  await getUserNameInput('admin1')
+  await getUserNameInput(userInfo.username)
 
   // 密码
-  await getPasswordInput('admin@123456')
+  await getPasswordInput(userInfo.password)
 
   // 监听 登录按钮
   const loginBtn = await getBtnNode()
