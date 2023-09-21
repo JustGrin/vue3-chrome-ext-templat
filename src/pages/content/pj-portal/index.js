@@ -1,13 +1,9 @@
-const userInfos = [
-  {
-    username: 'admin',
-    password: 'Lzdn88552016'
-  },
-  {
-    username: 'admin1',
-    password: 'admin@123456'
-  }
-]
+import { queryURL } from '@/utils'
+
+const userInfos = {
+  admin: 'Lzdn88552016',
+  admin1: 'admin@123456'
+}
 
 // 获取username输入框
 const getUserNameInput = (value) => {
@@ -52,13 +48,15 @@ const getBtnNode = () => {
 
 //  进入页面立即触发
 const onLoginClick = async () => {
-  const userInfo = userInfos[0]
+  const username = queryURL('username') || 'admin1'
+
+  const userPwd = userInfos[username]
 
   // 用户
-  await getUserNameInput(userInfo.username)
+  await getUserNameInput(username)
 
   // 密码
-  await getPasswordInput(userInfo.password)
+  await getPasswordInput(userPwd)
 
   // 监听 登录按钮
   const loginBtn = await getBtnNode()
